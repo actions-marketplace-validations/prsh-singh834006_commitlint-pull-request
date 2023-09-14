@@ -48,7 +48,7 @@ async function run() {
             core.setFailed(`PR title "${title}" doesn't match conventional commit message`);
             return
         }
-
+        console.log(commits)
         for(const commit of commits) {
           if(!REGEX_PATTERN.test(commit.message)) {
             core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);   
