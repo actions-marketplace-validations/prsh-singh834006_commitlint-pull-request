@@ -9830,7 +9830,7 @@ async function run() {
             core.setFailed(`Invalid event: ${eventName}`);
             return;
         }
-        console.log(github.context)
+        console.log(github.context.payload.pull_request)
         core.info(github.context.pull_request)
         
         const owner = github.context.payload.pull_request.base.user.login;
