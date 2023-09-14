@@ -20,8 +20,6 @@ async function run() {
             core.setFailed(`Invalid event: ${eventName}`);
             return;
         }
-        console.log(github.context.payload.pull_request)
-        core.info(github.context.pull_request)
         
         const owner = github.context.payload.pull_request.base.user.login;
 
@@ -45,10 +43,9 @@ async function run() {
           pull_number,
         })
    
-        core.info(`Pull request ${pullRequest}`)
 
         core.info(`Commit listed ${commitsListed}`)
-
+        console.log(commitsListed)
         if (!REGEX_PATTERN.test(title)) {
             core.setFailed(`PR title "${title}" doesn't match conventional commit message`);
             return
