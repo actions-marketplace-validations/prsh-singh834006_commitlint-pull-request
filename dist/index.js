@@ -9853,7 +9853,6 @@ async function run() {
           pull_number,
         })
     
-        core.info(`Commit listed ${commitsListed}`)
         
         if (!REGEX_PATTERN.test(title)) {
             core.setFailed(`PR title "${title}" doesn't match conventional commit message`);
@@ -9861,8 +9860,6 @@ async function run() {
         }
 
         for(const commit of commits) {
-          core.info(commit.message)
-
           if(!REGEX_PATTERN.test(commit.message)) {
             core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);   
           }
