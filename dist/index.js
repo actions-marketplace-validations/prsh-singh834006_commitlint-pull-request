@@ -9818,7 +9818,7 @@ const validEvent = ['pull_request'];
 async function run() {
     try {
         const authToken = core.getInput('GITHUB_TOKEN', { required: true })
-
+        core.info(authToken)
         const client = new github.getOctokit(authToken);
 
         const eventName = github.context.eventName;
