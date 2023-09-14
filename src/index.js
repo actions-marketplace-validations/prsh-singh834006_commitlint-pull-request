@@ -37,13 +37,12 @@ async function run() {
         
         core.info(`PR Title: "${title}"`);
         
-        const commitsListed = await client.rest.pulls.listCommits({
+        const { data: commitsListed } = await client.rest.pulls.listCommits({
           owner,
           repo,
           pull_number,
         })
-   
-
+    
         core.info(`Commit listed ${commitsListed}`)
         console.log(commitsListed)
         if (!REGEX_PATTERN.test(title)) {
