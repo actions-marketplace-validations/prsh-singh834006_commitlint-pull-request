@@ -9,6 +9,7 @@ async function run() {
     try {
         const authToken = core.getInput('GITHUB_TOKEN', { required: true })
         core.info(authToken)
+        console.log('AuthToken', authToken)
         const client = new github.getOctokit(authToken);
 
         const eventName = github.context.eventName;
@@ -19,7 +20,7 @@ async function run() {
             core.setFailed(`Invalid event: ${eventName}`);
             return;
         }
-
+        console.log(github.context)
         core.info(github.context.pull_request)
         
         const owner = github.context.payload.pull_request.base.user.login;
