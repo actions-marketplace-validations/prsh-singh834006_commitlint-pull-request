@@ -1,4 +1,4 @@
-<div align="center"><h1>Validate pull request title with conventional commit</h1></div>
+<div align="center"><h1>Validate pull request title and commits with conventional commit</h1></div>
 
 This action is an open pull request.
 
@@ -18,8 +18,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Conventional Pull Request Validator
-        uses: prsh-singh834006/validate-pr-title@0.0.1
+      - name: Commitlint Pull Request
+        uses: prsh-singh834006/commitlint-pull-request@0.0.1
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
