@@ -9837,11 +9837,12 @@ async function run() {
 
         const repo = github.context.payload.pull_request.base.repo.name;
 
+        const pull_number = github.context.payload.pull_request.number
 
         const { data: pullRequest } = await client.rest.pulls.get({
           owner,
           repo,
-          pull_number: github.context.payload.pull_request.number
+          pull_number,
         });
 
         const title = pullRequest.title;
@@ -9849,9 +9850,9 @@ async function run() {
         core.info(`PR Title: "${title}"`);
         
         const commitsListed = await client.rest.pulls.listCommits({
-          owner: repo.owner.login,
-          repo: repo.name,
-          pull_number: github.context.payload.pull_request.number,
+          owner,
+          repo,
+          pull_number,
         })
    
         core.info(`Pull request ${pullRequest}`)
