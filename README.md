@@ -18,7 +18,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate PR Tile
+      - name: Conventional Pull Request Validator
         uses: prsh-singh834006/validate-pr-title@0.0.1
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
