@@ -1,5 +1,5 @@
-name: 'Validate PR Title'
-description: 'Github action to enforce Pull Request title conventions'
+name: 'Conventional Pull Request Validator'
+description: 'Github action to enforce Pull Request to follow commitlint convention'
 author: 'Prashant Kumar'
 
 inputs:
