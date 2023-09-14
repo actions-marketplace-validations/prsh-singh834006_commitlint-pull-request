@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3  
     - name: Validate PR Title
-      uses: prsh-singh834006/validate-pr-title@0.1.5
+      uses: ./
       with:
         GITHUB_TOKEN: ${{ github.token }}

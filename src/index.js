@@ -43,6 +43,10 @@ async function run() {
           pull_number: github.context.payload.pull_request.number,
         })
    
+        core.info(`Pull request ${pullRequest}`)
+        
+        core.info(`Commit listed ${commitsListed}`)
+
         if (!REGEX_PATTERN.test(title)) {
             core.setFailed(`Pull Request title "${title}" doesn't match conventional commit message`);
             return
