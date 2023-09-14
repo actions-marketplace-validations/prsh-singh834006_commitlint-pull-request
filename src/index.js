@@ -48,13 +48,12 @@ async function run() {
             return
         }
 
-        for(const commit of commitsListed) {
-            core.info(commit.message)
-            if(!REGEX_PATTERN.test(commit.message)) {
-              core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);
-              return
-            }
+       commitsListed.each((commit) => {
+        core.info(commit.message)
+        if(!REGEX_PATTERN.test(commit.message)) {
+          core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);   
         }
+       })
 
     } catch (error) {
         core.setFailed(error.message);
