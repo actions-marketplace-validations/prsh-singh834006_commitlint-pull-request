@@ -15,5 +15,3 @@ jobs:
     - uses: actions/checkout@v3  
     - name: Validate PR Title
       uses: ./
-      with:
-        GITHUB_TOKEN: ${{ github.token }}
