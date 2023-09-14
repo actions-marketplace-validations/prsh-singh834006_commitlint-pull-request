@@ -9859,9 +9859,9 @@ async function run() {
             return
         }
         console.log(commits)
-        for(const commit of commits) {
-          if(!REGEX_PATTERN.test(commit.message)) {
-            core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);   
+        for(const commitObj of commits) {
+          if(!REGEX_PATTERN.test(commitObj.commit.message)) {
+            core.setFailed(`Commit message title "${commitObj.commit.message}" doesn't match conventional commit message`);   
           }
         }
 
