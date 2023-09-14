@@ -37,25 +37,26 @@ async function run() {
         
         core.info(`PR Title: "${title}"`);
         
-        const { data: commitsListed } = await client.rest.pulls.listCommits({
+        const { data: commits } = await client.rest.pulls.listCommits({
           owner,
           repo,
           pull_number,
         })
     
         core.info(`Commit listed ${commitsListed}`)
-        console.log(commitsListed)
+        
         if (!REGEX_PATTERN.test(title)) {
             core.setFailed(`PR title "${title}" doesn't match conventional commit message`);
             return
         }
 
-       commitsListed.each((commit) => {
-        core.info(commit.message)
-        if(!REGEX_PATTERN.test(commit.message)) {
-          core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);   
+        for(const commit of commits) {
+          core.info(commit.message)
+
+          if(!REGEX_PATTERN.test(commit.message)) {
+            core.setFailed(`Commit message title "${commit.message}" doesn't match conventional commit message`);   
+          }
         }
-       })
 
     } catch (error) {
         core.setFailed(error.message);
